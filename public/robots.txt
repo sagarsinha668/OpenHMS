@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Allow: /login
+Allow: /book
+
+Sitemap: https://openhrm.netlify.app/sitemap.xml
