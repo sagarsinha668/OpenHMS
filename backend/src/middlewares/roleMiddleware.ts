@@ -35,6 +35,11 @@ export const requireRole = (allowedRoles: UserRole[]) => {
         return;
       }
 
+      // Super Admin has universal access (read & write) to all dashboards and endpoints
+      if (req.user.roles.includes('admin')) {
+        return next();
+      }
+
       // Check if user has at least one of the required roles
       const hasRequiredRole = req.user.roles.some((role: UserRole) =>
         allowedRoles.includes(role)

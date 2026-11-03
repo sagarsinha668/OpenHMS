@@ -4,13 +4,18 @@ import { mockSlots, type Slot } from './mocks/slotData';
 import { mockMedicines } from './mocks/medicineData';
 import { v4 as uuidv4 } from 'uuid';
 
-// Determine API URL (default to localhost:3000 in local dev)
-const DEFAULT_API_URL = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-  ? 'http://localhost:3000/api'
-  : 'https://openhms.onrender.com/api';
+// Check API URL configuration
+const isLocalhost = typeof window !== 'undefined' && 
+  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
 
-const API_URL = import.meta.env.VITE_API_URL || DEFAULT_API_URL;
-const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true';
+// If VITE_API_URL is specified (e.g. connected to live Render backend), use it.
+// On localhost, default to http://localhost:3000/api.
+// On production/Netlify without a backend URL specified in env, enable mock data so all 4 dashboards work fully!
+const configuredApiUrl = import.meta.env.VITE_API_URL;
+const DEFAULT_API_URL = isLocalhost ? 'http://localhost:3000/api' : '';
+
+const API_URL = configuredApiUrl || DEFAULT_API_URL;
+export const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true' || (!configuredApiUrl && !isLocalhost) || !API_URL;
 
 const api = axios.create({
   baseURL: API_URL,
@@ -1126,17 +1131,39 @@ export const createOfflineVisit = async (patientId: string, hospitalId: string, 
 // --- Pharmacist APIs ---
 
 export const searchPharmacistVisitByToken = async (token: number, hospitalId: string): Promise<Visit | null> => {
-  const response = await api.get(`/pharmacist/visit/search`, { params: { token, hospitalId } });
+  if (USE_MOCK) {
+    await delay(300);
+    const found = mockVisits.find(v => v.tokenNumber === token && v.hospitalId === hospitalId);
+    return found || null;
+  }
+  const response = await api.get('/pharmacist/visit/search', { params: { token, hospitalId } });
   return mapBackendVisit(response.data);
 };
 
 export const searchPharmacistVisitOptimized = async (token: number, hospitalId: string): Promise<any | null> => {
-  const response = await api.get(`/pharmacist/visit/search-optimized`, { params: { token, hospitalId } });
+  if (USE_MOCK) {
+    await delay(300);
+    return {
+      tokenNumber: token,
+      patientName: 'Rahul Sharma',
+      patientPhone: '9876543210',
+      medicines: [
+        { medicineName: 'Ashwagandha Churna', quantity: 2, dosage: '1-0-1', instructions: 'After meals' },
+        { medicineName: 'Triphala Guggulu', quantity: 1, dosage: '0-0-1', instructions: 'Before sleep' },
+      ],
+      status: 'pending'
+    };
+  }
+  const response = await api.get('/pharmacist/visit/search-optimized', { params: { token, hospitalId } });
   return response.data;
 };
 
 export const giveMedicines = async (visitId: string, hospitalId: string, medicines: PrescribedMedicineItem[]): Promise<any> => {
-  const response = await api.post(`/pharmacist/give-medicine`, { visitId, hospitalId, medicines });
+  if (USE_MOCK) {
+    await delay(400);
+    return { success: true, message: 'Medicines dispensed successfully' };
+  }
+  const response = await api.post('/pharmacist/give-medicine', { visitId, hospitalId, medicines });
   return response.data;
 };
 
@@ -1150,6 +1177,25 @@ export interface Medicine {
 }
 
 export const getMedicinesList = async (page: number = 1, limit: number = 10, search?: string): Promise<{ medicines: Medicine[], total: number, pages: number }> => {
+  if (USE_MOCK) {
+    await delay(300);
+    let list = mockMedicines.map((name, idx) => ({
+      id: `med_${idx + 1}`,
+      name,
+      quantity: 50 + ((idx * 7) % 75),
+      lowStockThreshold: 15,
+    }));
+    if (search) {
+      list = list.filter(m => m.name.toLowerCase().includes(search.toLowerCase()));
+    }
+    const start = (page - 1) * limit;
+    const paginated = list.slice(start, start + limit);
+    return {
+      medicines: paginated,
+      total: list.length,
+      pages: Math.ceil(list.length / limit)
+    };
+  }
   const response = await api.get('/pharmacist/medicines', { params: { page, limit, search } });
   const { medicines, total, pages } = response.data;
   return {
@@ -1160,41 +1206,71 @@ export const getMedicinesList = async (page: number = 1, limit: number = 10, sea
 };
 
 export const getMedicineNames = async (): Promise<{id: string, name: string}[]> => {
+  if (USE_MOCK) {
+    await delay(200);
+    return mockMedicines.map((name, idx) => ({ id: `med_${idx + 1}`, name }));
+  }
   const response = await api.get('/pharmacist/medicines/names');
   return response.data;
 };
 
 export const getMedicineById = async (id: string): Promise<Medicine> => {
+  if (USE_MOCK) {
+    await delay(200);
+    const idx = parseInt(id.replace('med_', '')) - 1;
+    const name = mockMedicines[idx] || 'Ayurvedic Medicine';
+    return { id, name, quantity: 45, lowStockThreshold: 10 };
+  }
   const response = await api.get(`/pharmacist/medicine/${id}`);
   const m = response.data;
   return { ...m, id: m._id || m.id };
 };
 
 export const getMedicineDetail = async (name: string): Promise<Medicine> => {
+  if (USE_MOCK) {
+    await delay(200);
+    return { id: `med_${Date.now()}`, name, quantity: 40, lowStockThreshold: 10 };
+  }
   const response = await api.get('/pharmacist/medicines/detail', { params: { name } });
   const m = response.data;
   return { ...m, id: m._id || m.id };
 };
 
 export const addMedicine = async (medicineData: any): Promise<Medicine> => {
+  if (USE_MOCK) {
+    await delay(300);
+    const newMed: Medicine = { id: `med_${Date.now()}`, ...medicineData };
+    return newMed;
+  }
   const response = await api.post('/pharmacist/medicines', medicineData);
   const m = response.data;
   return { ...m, id: m._id || m.id };
 };
 
 export const updateMedicine = async (id: string, medicineData: any): Promise<Medicine> => {
+  if (USE_MOCK) {
+    await delay(300);
+    return { id, ...medicineData };
+  }
   const response = await api.put(`/pharmacist/medicines/${id}`, medicineData);
   const m = response.data;
   return { ...m, id: m._id || m.id };
 };
 
-
 export const bulkCreateMedicines = async (medicines: Partial<Medicine>[]): Promise<Medicine[]> => {
+  if (USE_MOCK) {
+    await delay(400);
+    return medicines.map((m, idx) => ({ id: `med_${Date.now()}_${idx}`, name: m.name || '', ...m }));
+  }
   const response = await api.post('/pharmacist/medicines/bulk', { medicines });
   return response.data;
 };
 
 export const bulkUpdateMedicines = async (medicines: Medicine[]): Promise<any> => {
+  if (USE_MOCK) {
+    await delay(400);
+    return { success: true, count: medicines.length };
+  }
   const response = await api.put('/pharmacist/medicines/bulk', { medicines });
   return response.data;
 };

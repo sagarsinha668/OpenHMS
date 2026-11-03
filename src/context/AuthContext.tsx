@@ -141,7 +141,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const switchRole = (role: UserRole) => {
-    if (user?.roles.includes(role) || user?.roles.includes('viewer')) {
+    if (user?.roles.includes(role) || user?.roles.includes('admin') || user?.roles.includes('viewer')) {
       setActiveRole(role);
       localStorage.setItem('activeRole', role);
       navigate(getDashboardPath(role));

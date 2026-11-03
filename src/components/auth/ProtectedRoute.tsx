@@ -28,7 +28,12 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, allowedRoles 
   }
 
   // Viewers have read-only access to all dashboards
-  if (user.roles.includes('viewer')) {
+  if (user.roles?.includes('viewer')) {
+    return <>{children}</>;
+  }
+
+  // Super Admin has full universal access to all dashboards with full edit/update powers
+  if (user.roles?.includes('admin')) {
     return <>{children}</>;
   }
 

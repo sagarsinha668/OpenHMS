@@ -65,9 +65,11 @@ export function DashboardLayout({
     ? 'pharmacist'
     : effectiveRole;
 
-  // For a viewer, provide direct switcher across all 4 dashboards
-  const showDashboardSwitcher = user.roles.length > 1 || isViewer;
-  const switchableRoles: UserRole[] = isViewer
+  // Super Admin and Viewer can directly switch across all 4 dashboards
+  const isSuperAdmin = Boolean(user.roles.includes('admin'));
+  const hasUniversalAccess = isSuperAdmin || isViewer;
+  const showDashboardSwitcher = user.roles.length > 1 || hasUniversalAccess;
+  const switchableRoles: UserRole[] = hasUniversalAccess
     ? ['admin', 'doctor', 'receptionist', 'pharmacist']
     : user.roles;
 
