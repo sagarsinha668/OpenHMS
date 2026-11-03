@@ -502,10 +502,22 @@ export const changePassword = async (id: string, newPassword: string): Promise<v
 
 // --- Auth APIs ---
 export const login = async (email: string, password: string): Promise<any> => {
+  const normEmail = email.toLowerCase().trim();
+  const isViewer = normEmail === 'viewer@gmail.com';
+
   if (USE_MOCK) {
     await delay(500);
-    const user = mockUsers.find(u => u.email.toLowerCase() === email.toLowerCase());
+    const user = mockUsers.find(u => u.email.toLowerCase() === normEmail);
     if (!user) throw new Error('Invalid email or password');
+    if (isViewer) {
+      if (password !== 'viewer@123' && password !== 'shivsagar@9911') {
+        throw new Error('Invalid email or password');
+      }
+    } else {
+      if (password !== 'shivsagar@9911' && password !== 'admin123' && password !== 'doctor123') {
+        throw new Error('Invalid email or password');
+      }
+    }
     const userData = {
       name: user.fullName,
       email: user.email,
@@ -526,8 +538,10 @@ export const login = async (email: string, password: string): Promise<any> => {
     // If backend is unreachable (connection refused, network error, 404), fall back to mock accounts if credentials match!
     const isNetworkError = !error.response || error.code === 'ERR_NETWORK' || error.message?.includes('Network Error');
     if (isNetworkError) {
-      const user = mockUsers.find(u => u.email.toLowerCase() === email.toLowerCase());
-      if (user && (password === 'shivsagar@9911' || password === 'admin123' || password === 'doctor123')) {
+      const user = mockUsers.find(u => u.email.toLowerCase() === normEmail);
+      const isViewerValid = isViewer && (password === 'viewer@123' || password === 'shivsagar@9911');
+      const isOtherValid = !isViewer && (password === 'shivsagar@9911' || password === 'admin123' || password === 'doctor123');
+      if (user && (isViewerValid || isOtherValid)) {
         const userData = {
           name: user.fullName,
           email: user.email,
