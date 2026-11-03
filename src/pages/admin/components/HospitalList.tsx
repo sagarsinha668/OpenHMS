@@ -8,6 +8,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useAuth } from '@/context/AuthContext';
+import toast from 'react-hot-toast';
 
 const HospitalList: React.FC = () => {
   const [hospitals, setHospitals] = useState<Hospital[]>([]);
@@ -15,13 +17,12 @@ const HospitalList: React.FC = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingHospital, setEditingHospital] = useState<Hospital | null>(null);
   const [selectedHospital, setSelectedHospital] = useState<Hospital | null>(null);
+  const { isViewer } = useAuth();
 
   const fetchHospitals = async () => {
     setLoading(true);
     try {
       const response = await getHospitals();
-      // Handle both mock (object) and real (array) responses if needed, 
-      // but based on api.ts mock returns { data, total }
       const data = 'data' in response ? response.data : response;
       setHospitals(data as Hospital[]);
     } catch (error) {
@@ -36,6 +37,10 @@ const HospitalList: React.FC = () => {
   }, []);
 
   const handleEdit = (hospital: Hospital) => {
+    if (isViewer) {
+      toast.error("Viewers have read-only access and cannot edit hospitals.");
+      return;
+    }
     setEditingHospital(hospital);
     setIsFormOpen(true);
   };
@@ -45,6 +50,10 @@ const HospitalList: React.FC = () => {
   };
 
   const handleAddNew = () => {
+    if (isViewer) {
+      toast.error("Viewers have read-only access and cannot add hospitals.");
+      return;
+    }
     setEditingHospital(null);
     setIsFormOpen(true);
   };
@@ -66,9 +75,14 @@ const HospitalList: React.FC = () => {
           <h2 className="text-2xl font-bold tracking-tight">Hospitals</h2>
           <p className="text-muted-foreground">Manage your hospital network and appointments.</p>
         </div>
-        <Button onClick={handleAddNew} className="gap-2">
+        <Button 
+          onClick={handleAddNew} 
+          disabled={isViewer} 
+          title={isViewer ? "Viewers cannot add hospitals" : "Add Hospital"}
+          className="gap-2"
+        >
           <Plus size={16} />
-          Add Hospital
+          {isViewer ? "Add Hospital (Disabled)" : "Add Hospital"}
         </Button>
       </div>
 
@@ -114,11 +128,13 @@ const HospitalList: React.FC = () => {
                 onClick={() => handleManageSlots(hospital)}
               >
                 <Calendar size={16} />
-                Slots
+                View Slots
               </Button>
               <Button 
                 variant="ghost" 
                 size="icon"
+                disabled={isViewer}
+                title={isViewer ? "Viewers cannot edit" : "Edit hospital"}
                 className="text-muted-foreground hover:text-foreground"
                 onClick={() => handleEdit(hospital)}
               >
@@ -129,12 +145,14 @@ const HospitalList: React.FC = () => {
         ))}
       </div>
 
-      <HospitalFormModal
-        isOpen={isFormOpen}
-        onClose={() => setIsFormOpen(false)}
-        onSuccess={fetchHospitals}
-        hospitalToEdit={editingHospital}
-      />
+      {!isViewer && (
+        <HospitalFormModal
+          isOpen={isFormOpen}
+          onClose={() => setIsFormOpen(false)}
+          onSuccess={fetchHospitals}
+          hospitalToEdit={editingHospital}
+        />
+      )}
 
       {selectedHospital && (
         <SlotManagerModal

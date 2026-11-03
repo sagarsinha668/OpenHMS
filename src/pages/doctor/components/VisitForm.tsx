@@ -28,6 +28,7 @@ import { updateVisit, type Metadata } from '@/services/api';
 import toast from 'react-hot-toast';
 
 import { useMedicineContext } from '@/context/MedicineContext';
+import { useAuth } from '@/context/AuthContext';
 
 const prescribedMedicineSchema = z.object({
   medicineId: z.string().optional(),
@@ -130,6 +131,7 @@ const extractOther = (selected: string[] = [], options: string[] = []) => {
 
 const VisitForm: React.FC<VisitFormProps> = ({ visitId, onSuccess, metadata, initialData, lastVisit }) => {
   const { medicineNames } = useMedicineContext();
+  const { isViewer } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [medicineSearch, setMedicineSearch] = useState('');
   
@@ -388,6 +390,10 @@ const VisitForm: React.FC<VisitFormProps> = ({ visitId, onSuccess, metadata, ini
   };
 
   const onSubmit = async (data: VisitFormValues) => {
+    if (isViewer) {
+      toast.error('Viewers have read-only access and cannot submit visit details.');
+      return;
+    }
     setIsSubmitting(true);
     try {
       // Merge "Other" values into arrays if they exist
@@ -1123,7 +1129,7 @@ const VisitForm: React.FC<VisitFormProps> = ({ visitId, onSuccess, metadata, ini
           </div>
 
           <div className="flex justify-end pt-4">
-            <Button type="submit" size="lg" disabled={isSubmitting} className="w-full sm:w-auto px-12">
+            <Button type="submit" size="lg" disabled={isSubmitting || isViewer} className="w-full sm:w-auto px-12">
               {isSubmitting ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin mr-2" />
@@ -1132,7 +1138,7 @@ const VisitForm: React.FC<VisitFormProps> = ({ visitId, onSuccess, metadata, ini
               ) : (
                 <>
                   <Save className="h-4 w-4 mr-2" />
-                  Submit Visit Details
+                  {isViewer ? 'Viewer Mode (Read-Only)' : 'Submit Visit Details'}
                 </>
               )}
             </Button>

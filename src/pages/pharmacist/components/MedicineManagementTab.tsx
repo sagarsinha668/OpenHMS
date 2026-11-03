@@ -15,6 +15,7 @@ import {
 } from '@/services/api';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription } from '@/components/ui/dialog';
 import toast from 'react-hot-toast';
+import { useAuth } from '@/context/AuthContext';
 
 interface MedicineManagementTabProps {
   hospitalId: string;
@@ -100,6 +101,7 @@ const MedicineManagementTab: React.FC<MedicineManagementTabProps> = ({ hospitalI
   };
 
   const openAddModal = () => {
+    if (isViewer) { toast.error('Viewers cannot add medicines.'); return; }
     setEditingMedicine(null);
     setFormData({
       name: '',
@@ -110,6 +112,7 @@ const MedicineManagementTab: React.FC<MedicineManagementTabProps> = ({ hospitalI
   };
 
   const openEditModal = (medicine: Medicine) => {
+    if (isViewer) { toast.error('Viewers cannot edit medicines.'); return; }
     setEditingMedicine(medicine);
     setFormData({
       name: medicine.name,
@@ -120,6 +123,7 @@ const MedicineManagementTab: React.FC<MedicineManagementTabProps> = ({ hospitalI
   };
 
   const handleSave = async () => {
+    if (isViewer) { toast.error('Viewers cannot modify medicines.'); return; }
     if (!formData.name) {
       toast.error('Name is required');
       return;
@@ -173,7 +177,7 @@ const MedicineManagementTab: React.FC<MedicineManagementTabProps> = ({ hospitalI
           />
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
         </div>
-        <Button onClick={openAddModal}>
+        <Button onClick={openAddModal} disabled={isViewer} title={isViewer ? 'Viewers cannot add medicines' : 'Add Medicine'}>
           <Plus className="h-4 w-4 mr-2" /> Add Medicine
         </Button>
       </div>

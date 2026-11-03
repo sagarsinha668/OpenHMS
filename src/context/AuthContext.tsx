@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect, useCallback } fr
 import { useNavigate, useLocation } from 'react-router-dom';
 import * as api from '../services/api';
 
-export type UserRole = 'admin' | 'doctor' | 'receptionist' | 'pharmacist' | 'patient';
+export type UserRole = 'admin' | 'doctor' | 'receptionist' | 'pharmacist' | 'viewer' | 'patient';
 
 interface User {
   name: string;
@@ -13,6 +13,7 @@ interface User {
 interface AuthContextType {
   user: User | null;
   activeRole: UserRole | null;
+  isViewer: boolean;
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
@@ -22,8 +23,31 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [activeRole, setActiveRole] = useState<UserRole | null>(null);
+  const [user, setUser] = useState<User | null>(() => {
+    try {
+      const saved = localStorage.getItem('auth_user');
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  });
+
+  const [activeRole, setActiveRole] = useState<UserRole | null>(() => {
+    try {
+      const savedRole = localStorage.getItem('activeRole') as UserRole;
+      if (savedRole) return savedRole;
+      const saved = localStorage.getItem('auth_user');
+      if (saved) {
+        const u = JSON.parse(saved);
+        if (u.roles?.includes('viewer')) return 'admin';
+        return u.roles?.[0] || null;
+      }
+      return null;
+    } catch {
+      return null;
+    }
+  });
+
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
@@ -34,36 +58,52 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       case 'doctor': return '/doctor';
       case 'receptionist': return '/receptionist';
       case 'pharmacist': return '/pharmacist';
+      case 'viewer': return '/admin';
       default: return '/login';
     }
+  };
+
+  const isViewer = Boolean(user?.roles?.includes('viewer'));
+
+  const normalizeUser = (userObj: any, fallbackEmail: string = ''): User => {
+    const rawRoles = userObj.roles || userObj.userRoles || [];
+    const roles: UserRole[] = (Array.isArray(rawRoles) ? rawRoles : [rawRoles])
+      .map((r: any) => String(r).toLowerCase() as UserRole);
+    return {
+      name: userObj.name || userObj.fullName || 'User',
+      email: userObj.email || fallbackEmail,
+      roles,
+    };
   };
 
   const initUser = useCallback(async () => {
     try {
       const response = await api.getCurrentUser();
-      if (response && response.user) {
-        setUser(response.user);
+      const userObj = response?.user || response;
+      if (userObj) {
+        const formattedUser = normalizeUser(userObj);
+        setUser(formattedUser);
+        localStorage.setItem('auth_user', JSON.stringify(formattedUser));
         
-        // Try to restore active role from localStorage
         const savedRole = localStorage.getItem('activeRole') as UserRole;
-        if (savedRole && response.user.roles.includes(savedRole)) {
+        if (savedRole && (formattedUser.roles.includes(savedRole) || formattedUser.roles.includes('viewer'))) {
           setActiveRole(savedRole);
-        } else if (!activeRole && response.user.roles.length > 0) {
-          // Default to first role if not set
-          const defaultRole = response.user.roles[0];
+        } else if (formattedUser.roles.length > 0) {
+          const defaultRole = formattedUser.roles.includes('viewer') ? 'admin' : formattedUser.roles[0];
           setActiveRole(defaultRole);
           localStorage.setItem('activeRole', defaultRole);
         }
       }
     } catch (error) {
-      console.error('Failed to fetch current user', error);
-      if (!location.pathname.startsWith('/login') && !location.pathname.startsWith('/signup') && !location.pathname.startsWith('/book')) {
-        navigate('/login');
+      console.warn('Could not fetch session from backend, checking local auth cache:', error);
+      const saved = localStorage.getItem('auth_user');
+      if (!saved && !location.pathname.startsWith('/login') && !location.pathname.startsWith('/signup') && !location.pathname.startsWith('/book')) {
+        navigate('/login', { replace: true });
       }
     } finally {
       setLoading(false);
     }
-  }, [navigate, location.pathname, activeRole]);
+  }, [navigate, location.pathname]);
 
   useEffect(() => {
     initUser();
@@ -71,16 +111,23 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = async (email: string, password: string) => {
     const response = await api.login(email, password);
-    const userData = response.user;
-    setUser(userData);
+    const userObj = response?.user || response;
+    const formattedUser = normalizeUser(userObj, email);
     
-    if (userData.roles.length > 0) {
-      const primaryRole = userData.roles[0];
+    setUser(formattedUser);
+    localStorage.setItem('auth_user', JSON.stringify(formattedUser));
+    
+    if (formattedUser.roles.includes('viewer')) {
+      setActiveRole('admin');
+      localStorage.setItem('activeRole', 'admin');
+      navigate('/admin', { replace: true });
+    } else if (formattedUser.roles.length > 0) {
+      const primaryRole = formattedUser.roles[0];
       setActiveRole(primaryRole);
       localStorage.setItem('activeRole', primaryRole);
-      navigate(getDashboardPath(primaryRole));
+      navigate(getDashboardPath(primaryRole), { replace: true });
     } else {
-      navigate('/login');
+      navigate('/login', { replace: true });
     }
   };
 
@@ -89,11 +136,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setUser(null);
     setActiveRole(null);
     localStorage.removeItem('activeRole');
-    navigate('/login');
+    localStorage.removeItem('auth_user');
+    navigate('/login', { replace: true });
   };
 
   const switchRole = (role: UserRole) => {
-    if (user?.roles.includes(role)) {
+    if (user?.roles.includes(role) || user?.roles.includes('viewer')) {
       setActiveRole(role);
       localStorage.setItem('activeRole', role);
       navigate(getDashboardPath(role));
@@ -101,7 +149,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <AuthContext.Provider value={{ user, activeRole, loading, login, logout, switchRole }}>
+    <AuthContext.Provider value={{ user, activeRole, isViewer, loading, login, logout, switchRole }}>
       {children}
     </AuthContext.Provider>
   );

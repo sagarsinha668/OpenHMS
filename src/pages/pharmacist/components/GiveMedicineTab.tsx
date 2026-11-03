@@ -12,6 +12,7 @@ import { calculateAge } from '@/utils/dateUtils';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 import { useMedicineContext } from '@/context/MedicineContext';
+import { useAuth } from '@/context/AuthContext';
 
 interface GiveMedicineTabProps {
   hospitalId: string;
@@ -19,6 +20,7 @@ interface GiveMedicineTabProps {
 
 const GiveMedicineTab: React.FC<GiveMedicineTabProps> = ({ hospitalId }) => {
   const { medicineNames } = useMedicineContext();
+  const { isViewer } = useAuth();
   const [tokenNumber, setTokenNumber] = useState('');
   const [loading, setLoading] = useState(false);
   const [visit, setVisit] = useState<Visit | null>(null);
@@ -76,6 +78,10 @@ const GiveMedicineTab: React.FC<GiveMedicineTabProps> = ({ hospitalId }) => {
   };
 
   const handleGiveMedicine = async () => {
+    if (isViewer) {
+      toast.error('Viewers have read-only access and cannot dispense medicines.');
+      return;
+    }
     if (!visit) return;
 
     // Validate: Backend only needs medicineName (it looks up by name), not medicineId
@@ -180,7 +186,7 @@ const GiveMedicineTab: React.FC<GiveMedicineTabProps> = ({ hospitalId }) => {
                   <CardTitle className="text-md">Prescribed Medicines</CardTitle>
                   <CardDescription>Verify and update medicines to be dispensed</CardDescription>
                 </div>
-                {!visit.medicineGiven && (
+                {!visit.medicineGiven && !isViewer && (
                   <Button size="sm" variant="outline" onClick={handleAddMedicine}>
                     <Plus className="h-4 w-4 mr-2" /> Add Medicine
                   </Button>
@@ -380,12 +386,12 @@ const GiveMedicineTab: React.FC<GiveMedicineTabProps> = ({ hospitalId }) => {
                     <div className="flex justify-end">
                       <Button
                         onClick={handleGiveMedicine}
-                        disabled={dispensing || medicines.length === 0}
+                        disabled={isViewer || dispensing || medicines.length === 0}
                         size="lg"
                         className="bg-emerald-600 hover:bg-emerald-700"
                       >
                         {dispensing ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : <Pill className="h-4 w-4 mr-2" />}
-                        Give Medicines
+                        {isViewer ? 'Viewer Mode (Disabled)' : 'Give Medicines'}
                       </Button>
                     </div>
                   </div>

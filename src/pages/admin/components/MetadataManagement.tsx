@@ -6,8 +6,10 @@ import { Badge } from '@/components/ui/badge';
 import { X, Plus, Save, Loader2, Thermometer, Pill, Stethoscope, Activity } from 'lucide-react';
 import { getMetadata, updateMetadata, type Metadata } from '@/services/api';
 import toast from 'react-hot-toast';
+import { useAuth } from '@/context/AuthContext';
 
 const MetadataManagement: React.FC = () => {
+  const { isViewer } = useAuth();
   const [metadata, setMetadata] = useState<Metadata | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -58,6 +60,7 @@ const MetadataManagement: React.FC = () => {
   };
 
   const handleSave = async () => {
+    if (isViewer) { toast.error('Viewers cannot update form settings.'); return; }
     if (!metadata) return;
     setSaving(true);
     try {
@@ -92,7 +95,7 @@ const MetadataManagement: React.FC = () => {
           <h2 className="text-2xl font-bold tracking-tight">Form Settings</h2>
           <p className="text-muted-foreground">Manage the options available in doctor consultation forms</p>
         </div>
-        <Button onClick={handleSave} disabled={saving} className="gap-2">
+        <Button onClick={handleSave} disabled={isViewer || saving} className="gap-2">
           {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
           Save Changes
         </Button>

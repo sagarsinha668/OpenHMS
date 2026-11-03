@@ -5,6 +5,7 @@ import { type Slot } from '../../../services/mocks/slotData';
 import { getSlots, deleteSlot, deleteSlotsByDate } from '../../../services/api';
 import SlotCreationForm from './SlotCreationForm';
 import { format, parseISO } from 'date-fns';
+import { useAuth } from '@/context/AuthContext';
 import toast from 'react-hot-toast';
 import {
   Dialog,
@@ -30,6 +31,7 @@ const SlotManagerModal: React.FC<SlotManagerModalProps> = ({ isOpen, onClose, ho
   const [loadingMore, setLoadingMore] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalSlots, setTotalSlots] = useState(0);
+  const { isViewer } = useAuth();
   const limit = 50;
 
   const fetchSlots = async (page: number = 1, append: boolean = false) => {
@@ -78,10 +80,13 @@ const SlotManagerModal: React.FC<SlotManagerModalProps> = ({ isOpen, onClose, ho
   }, [isOpen, hospital]);
 
   const handleDeleteSlot = async (slotId: string) => {
+    if (isViewer) {
+      toast.error('Viewers have read-only access and cannot delete slots.');
+      return;
+    }
     try {
       await deleteSlot(slotId);
       toast.success('Slot deleted successfully');
-      // Refresh from first page
       setSlots([]);
       setCurrentPage(1);
       fetchSlots(1, false);
@@ -91,13 +96,16 @@ const SlotManagerModal: React.FC<SlotManagerModalProps> = ({ isOpen, onClose, ho
   };
 
   const handleBulkDelete = async (date: string) => {
+    if (isViewer) {
+      toast.error('Viewers have read-only access and cannot delete slots.');
+      return;
+    }
     if (!hospital) return;
     if (!confirm(`Are you sure you want to delete all slots for ${format(parseISO(date), 'MMMM d, yyyy')}?`)) return;
     
     try {
       await deleteSlotsByDate(hospital.id, date);
       toast.success('Slots deleted successfully');
-      // Refresh from first page
       setSlots([]);
       setCurrentPage(1);
       fetchSlots(1, false);
@@ -120,18 +128,22 @@ const SlotManagerModal: React.FC<SlotManagerModalProps> = ({ isOpen, onClose, ho
         <DialogHeader className="p-6 pb-2">
           <DialogTitle>Manage Slots</DialogTitle>
           <DialogDescription>
-            Manage appointment slots for <span className="font-medium text-foreground">{hospital?.name}</span>
+            {isViewer ? 'Viewing slots for ' : 'Manage appointment slots for '}
+            <span className="font-medium text-foreground">{hospital?.name}</span>
           </DialogDescription>
         </DialogHeader>
         
         <ScrollArea className="flex-1 p-6 pt-2">
-          {hospital && <SlotCreationForm hospitalId={hospital.id} onSuccess={() => {
-            setSlots([]);
-            setCurrentPage(1);
-            fetchSlots(1, false);
-          }} />}
-
-          <Separator className="my-6" />
+          {!isViewer && hospital && (
+            <>
+              <SlotCreationForm hospitalId={hospital.id} onSuccess={() => {
+                setSlots([]);
+                setCurrentPage(1);
+                fetchSlots(1, false);
+              }} />
+              <Separator className="my-6" />
+            </>
+          )}
 
           <div>
             <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
@@ -142,7 +154,7 @@ const SlotManagerModal: React.FC<SlotManagerModalProps> = ({ isOpen, onClose, ho
               <div className="text-center py-8 text-muted-foreground">Loading slots...</div>
             ) : slots.length === 0 ? (
               <div className="text-center py-12 border-2 border-dashed rounded-lg text-muted-foreground">
-                No slots found. Generate some above.
+                No slots found.
               </div>
             ) : (
               <div className="space-y-6">
@@ -156,15 +168,17 @@ const SlotManagerModal: React.FC<SlotManagerModalProps> = ({ isOpen, onClose, ho
                           {daySlots.length} slots
                         </Badge>
                       </div>
-                      <Button 
-                        variant="destructive" 
-                        size="sm" 
-                        className="h-8 gap-2"
-                        onClick={() => handleBulkDelete(date)}
-                      >
-                        <Trash2 size={14} />
-                        Delete Day
-                      </Button>
+                      {!isViewer && (
+                        <Button 
+                          variant="destructive" 
+                          size="sm" 
+                          className="h-8 gap-2"
+                          onClick={() => handleBulkDelete(date)}
+                        >
+                          <Trash2 size={14} />
+                          Delete Day
+                        </Button>
+                      )}
                     </div>
                     <div className="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                         {daySlots.map((slot) => (
@@ -186,16 +200,18 @@ const SlotManagerModal: React.FC<SlotManagerModalProps> = ({ isOpen, onClose, ho
                               />
                             </div>
                           </div>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={() => handleDeleteSlot(slot.id)}
-                            disabled={slot.bookedCount > 0}
-                            className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
-                            title={slot.bookedCount > 0 ? 'Cannot delete booked slot' : 'Delete slot'}
-                          >
-                            <Trash2 size={16} />
-                          </Button>
+                          {!isViewer && (
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={() => handleDeleteSlot(slot.id)}
+                              disabled={slot.bookedCount > 0}
+                              className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+                              title={slot.bookedCount > 0 ? 'Cannot delete booked slot' : 'Delete slot'}
+                            >
+                              <Trash2 size={16} />
+                            </Button>
+                          )}
                         </div>
                       ))}
                     </div>

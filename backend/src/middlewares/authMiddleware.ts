@@ -52,7 +52,19 @@ export const restrictTo = (...roles: string[]) => {
       return res.status(401).json({ success: false, message: 'Unauthorized' });
     }
 
-    const hasRole = req.user.roles.some((role) => roles.includes(role.toUpperCase()));
+    // Viewer read-only rule
+    if (req.user.roles.includes('viewer')) {
+      if (req.method === 'GET' || req.method === 'HEAD' || req.method === 'OPTIONS') {
+        return next();
+      }
+      return res.status(403).json({
+        success: false,
+        message: 'Forbidden: Viewer has read-only access and cannot modify data.',
+      });
+    }
+
+    const upperRoles = roles.map(r => r.toUpperCase());
+    const hasRole = req.user.roles.some((role) => upperRoles.includes(role.toUpperCase()));
     if (!hasRole) {
       return res.status(403).json({
         success: false,
@@ -63,4 +75,3 @@ export const restrictTo = (...roles: string[]) => {
     next();
   };
 };
-

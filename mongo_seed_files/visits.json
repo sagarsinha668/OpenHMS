@@ -1,0 +1,325 @@
+[
+  {
+    "_id": {
+      "$oid": "662000000000000000000001"
+    },
+    "visitToken": 1,
+    "patientId": {
+      "$oid": "65e000000000000000000001"
+    },
+    "hospitalId": {
+      "$oid": "65a000000000000000000001"
+    },
+    "doctorId": {
+      "$oid": "65b000000000000000000002"
+    },
+    "appointmentId": "APT8492011",
+    "status": "done",
+    "isOfflineAppointment": false,
+    "disease": [
+      "Osteoarthritis",
+      "Lumbar Spondylosis"
+    ],
+    "diseaseDuration": "6 months",
+    "presentSymptoms": [
+      "Joint Stiffness",
+      "Morning Pain",
+      "Swelling in Lower Limbs"
+    ],
+    "previousTreatment": [
+      "Allopathy (NSAIDs, temporary relief)"
+    ],
+    "treatmentGiven": [
+      "Nadi Pariksha",
+      "Janu Basti",
+      "Panchakarma"
+    ],
+    "vitals": {
+      "pulse": 76,
+      "bp": "124/82",
+      "temperature": 98.4
+    },
+    "nadi": {
+      "wrist": "Right",
+      "gati": "Mandook (Frog-like)",
+      "bala": "Madhyama (Medium)",
+      "tala": "Sama",
+      "temperature": "Normal"
+    },
+    "ayurvedicBaseline": {
+      "dosha": {
+        "vata": 65,
+        "pitta": 20,
+        "kapha": 15,
+        "indication": "Chronic",
+        "dominant": "Vata"
+      },
+      "agni": "Vishamagni (Irregular digestive fire)",
+      "amaStatus": "Sama (Endotoxins present)",
+      "dailyHabits": {
+        "sleep": "5-6 hours, restless",
+        "appetite": "Low & irregular",
+        "bowel": "Constipated / dry stools"
+      }
+    },
+    "otherProblems": {
+      "acidity": true,
+      "diabetes": false,
+      "constipation": true,
+      "amebiasis": false,
+      "bp": false,
+      "heartProblems": false,
+      "other": "Mild lower back stiffness upon waking"
+    },
+    "prescribedMedicines": [
+      {
+        "medicineId": {
+          "$oid": "65c00000000000000000000a"
+        },
+        "medicineName": "Yograj Guggulu",
+        "quantity": 2,
+        "dosage": "1-0-1",
+        "kala": "After",
+        "anupana": "Warm Water",
+        "instructions": "Take after meals with lukewarm water",
+        "duration": "30 days"
+      },
+      {
+        "medicineId": {
+          "$oid": "65c000000000000000000001"
+        },
+        "medicineName": "Triphala Churna",
+        "quantity": 1,
+        "dosage": "0-0-1",
+        "kala": "Night",
+        "anupana": "Warm Water",
+        "instructions": "Take 1 tsp at bedtime with warm water",
+        "duration": "30 days"
+      },
+      {
+        "medicineId": {
+          "$oid": "65c000000000000000000007"
+        },
+        "medicineName": "Haridra Khand",
+        "quantity": 1,
+        "dosage": "1-0-0",
+        "kala": "Morning",
+        "anupana": "Warm Milk",
+        "instructions": "Early morning with warm milk for inflammation",
+        "duration": "15 days"
+      }
+    ],
+    "medicineGiven": false,
+    "givenMedicines": [],
+    "advice": "Strictly avoid curd, sour foods, and direct air conditioning. Apply warm sesame oil locally.",
+    "followUpDate": "2026-12-03",
+    "createdAt": {
+      "$date": "2026-11-03T09:15:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-11-03T09:40:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "662000000000000000000002"
+    },
+    "visitToken": 2,
+    "patientId": {
+      "$oid": "65e000000000000000000002"
+    },
+    "hospitalId": {
+      "$oid": "65a000000000000000000001"
+    },
+    "doctorId": {
+      "$oid": "65b000000000000000000003"
+    },
+    "appointmentId": "APT8492012",
+    "status": "done",
+    "isOfflineAppointment": false,
+    "disease": [
+      "PCOS / PCOD",
+      "Hypothyroidism"
+    ],
+    "diseaseDuration": "1.5 years",
+    "presentSymptoms": [
+      "Irregular Menstrual Cycles",
+      "Weight Gain",
+      "Hair Thinning"
+    ],
+    "previousTreatment": [
+      "Hormonal Pills (discontinued due to side-effects)"
+    ],
+    "treatmentGiven": [
+      "Nadi Pariksha",
+      "Udvartana",
+      "Nasya"
+    ],
+    "vitals": {
+      "pulse": 82,
+      "bp": "118/78",
+      "temperature": 98.6
+    },
+    "nadi": {
+      "wrist": "Left",
+      "gati": "Hamsa (Swan-like)",
+      "bala": "Pravara",
+      "tala": "Sama",
+      "temperature": "Normal"
+    },
+    "ayurvedicBaseline": {
+      "dosha": {
+        "vata": 25,
+        "pitta": 30,
+        "kapha": 45,
+        "indication": "Chronic",
+        "dominant": "Kapha"
+      },
+      "agni": "Mandagni (Sluggish metabolic fire)",
+      "amaStatus": "Nirama",
+      "dailyHabits": {
+        "sleep": "7-8 hours, daytime drowsiness",
+        "appetite": "Variable",
+        "bowel": "Regular"
+      }
+    },
+    "otherProblems": {
+      "acidity": false,
+      "diabetes": false,
+      "constipation": false,
+      "amebiasis": false,
+      "bp": false,
+      "heartProblems": false,
+      "other": "Lethargy and water retention"
+    },
+    "prescribedMedicines": [
+      {
+        "medicineId": {
+          "$oid": "65c00000000000000000000c"
+        },
+        "medicineName": "Shatavari Kalpa",
+        "quantity": 1,
+        "dosage": "1-0-1",
+        "kala": "After",
+        "anupana": "Warm Milk",
+        "instructions": "1 tsp morning and evening with warm milk",
+        "duration": "45 days"
+      },
+      {
+        "medicineId": {
+          "$oid": "65c000000000000000000009"
+        },
+        "medicineName": "Chandraprabha Vati",
+        "quantity": 2,
+        "dosage": "1-0-1",
+        "kala": "After",
+        "anupana": "Warm Water",
+        "instructions": "Take after meals",
+        "duration": "30 days"
+      }
+    ],
+    "medicineGiven": true,
+    "givenMedicines": [
+      {
+        "medicineId": {
+          "$oid": "65c00000000000000000000c"
+        },
+        "medicineName": "Shatavari Kalpa",
+        "quantity": 1,
+        "dosage": "1-0-1"
+      },
+      {
+        "medicineId": {
+          "$oid": "65c000000000000000000009"
+        },
+        "medicineName": "Chandraprabha Vati",
+        "quantity": 2,
+        "dosage": "1-0-1"
+      }
+    ],
+    "advice": "Daily 30 minutes brisk walking. Practice Surya Namaskar and avoid sugar and refined bakery items.",
+    "followUpDate": "2026-12-18",
+    "createdAt": {
+      "$date": "2026-11-03T09:30:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-11-03T10:15:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "662000000000000000000003"
+    },
+    "visitToken": 3,
+    "patientId": {
+      "$oid": "65e000000000000000000003"
+    },
+    "hospitalId": {
+      "$oid": "65a000000000000000000001"
+    },
+    "doctorId": {
+      "$oid": "65b000000000000000000002"
+    },
+    "appointmentId": "APT8492013",
+    "status": "waiting",
+    "isOfflineAppointment": false,
+    "disease": [
+      "Diabetes Mellitus"
+    ],
+    "diseaseDuration": "5 years",
+    "presentSymptoms": [
+      "Chronic Fatigue",
+      "Burning Sensation",
+      "Frequent Urination"
+    ],
+    "previousTreatment": [
+      "Metformin 500mg BD"
+    ],
+    "treatmentGiven": [],
+    "medicineGiven": false,
+    "createdAt": {
+      "$date": "2026-11-03T10:05:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-11-03T10:05:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "662000000000000000000004"
+    },
+    "visitToken": 4,
+    "patientId": {
+      "$oid": "65e000000000000000000004"
+    },
+    "hospitalId": {
+      "$oid": "65a000000000000000000001"
+    },
+    "doctorId": {
+      "$oid": "65b000000000000000000002"
+    },
+    "status": "waiting",
+    "isOfflineAppointment": true,
+    "disease": [
+      "Chronic Migraine"
+    ],
+    "diseaseDuration": "2 years",
+    "presentSymptoms": [
+      "Severe Headache",
+      "Burning Sensation"
+    ],
+    "previousTreatment": [],
+    "treatmentGiven": [],
+    "medicineGiven": false,
+    "createdAt": {
+      "$date": "2026-11-03T10:20:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-11-03T10:20:00.000Z"
+    },
+    "__v": 0
+  }
+]

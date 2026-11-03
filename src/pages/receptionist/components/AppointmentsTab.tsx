@@ -16,6 +16,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import toast from 'react-hot-toast';
+import { useAuth } from '@/context/AuthContext';
 import CheckInPanel from './CheckInPanel';
 import PatientSlipModal from '@/components/shared/PatientSlipModal';
 
@@ -31,6 +32,7 @@ interface AppointmentsTabProps {
 }
 
 const AppointmentsTab: React.FC<AppointmentsTabProps> = ({ hospitalId, onBack }) => {
+  const { isViewer } = useAuth();
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -227,7 +229,7 @@ const AppointmentsTab: React.FC<AppointmentsTabProps> = ({ hospitalId, onBack })
                               <Button
                                 size="sm"
                                 variant={isSelected ? 'default' : 'outline'}
-                                disabled={apt.status !== 'booked'}
+                                disabled={isViewer || apt.status !== 'booked'}
                                 onClick={() => handleCheckInClick(apt)}
                               >
                                 {isSelected ? 'Selected' : 'Check In'}

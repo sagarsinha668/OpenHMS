@@ -1,6 +1,6 @@
 // Centralized shared enums and interfaces for models
 
-export type UserRole = 'admin' | 'doctor' | 'receptionist';
+export type UserRole = 'admin' | 'doctor' | 'receptionist' | 'pharmacist' | 'viewer';
 
 export type Sex = 'male' | 'female' | 'other';
 

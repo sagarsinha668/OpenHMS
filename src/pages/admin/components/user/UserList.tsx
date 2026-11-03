@@ -12,7 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Edit, Key, Loader2 } from 'lucide-react';
+import { Edit, Key, Loader2, Eye } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useAuth } from '@/context/AuthContext';
 import toast from 'react-hot-toast';
 
 const UserList: React.FC = () => {
@@ -29,6 +30,7 @@ const UserList: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [editingUser, setEditingUser] = useState<User | null>(null);
   const [changingPasswordUser, setChangingPasswordUser] = useState<User | null>(null);
+  const { isViewer } = useAuth();
 
   useEffect(() => {
     fetchUsers();
@@ -47,10 +49,18 @@ const UserList: React.FC = () => {
   };
 
   const handleEditClick = (user: User) => {
+    if (isViewer) {
+      toast.error("Viewers have read-only access and cannot edit users.");
+      return;
+    }
     setEditingUser(user);
   };
 
   const handleChangePasswordClick = (user: User) => {
+    if (isViewer) {
+      toast.error("Viewers have read-only access and cannot change passwords.");
+      return;
+    }
     setChangingPasswordUser(user);
   };
 
@@ -58,15 +68,17 @@ const UserList: React.FC = () => {
     <Card>
       {loading ? (
         <div className="flex justify-center p-8">
-          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          <Loader2 className="h-6 w-6 animate-spin text-primary" />
         </div>
+      ) : users.length === 0 ? (
+        <div className="text-center p-8 text-muted-foreground">No users found.</div>
       ) : (
         <Table>
           <TableHeader>
             <TableRow>
               <TableHead>Name</TableHead>
               <TableHead>Email</TableHead>
-              <TableHead>Role</TableHead>
+              <TableHead>Roles</TableHead>
               <TableHead>Details</TableHead>
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
@@ -79,7 +91,14 @@ const UserList: React.FC = () => {
                 <TableCell>
                   <div className="flex flex-wrap gap-1">
                     {user.userRoles.map((role) => (
-                      <Badge key={role} variant="outline" className="capitalize">{role}</Badge>
+                      <Badge 
+                        key={role} 
+                        variant={role === 'viewer' ? 'secondary' : 'outline'} 
+                        className={`capitalize ${role === 'viewer' ? 'bg-amber-100 text-amber-800 border-amber-300' : ''}`}
+                      >
+                        {role === 'viewer' && <Eye className="h-3 w-3 mr-1 inline" />}
+                        {role}
+                      </Badge>
                     ))}
                   </div>
                 </TableCell>
@@ -92,10 +111,22 @@ const UserList: React.FC = () => {
                   )}
                 </TableCell>
                 <TableCell className="text-right space-x-2">
-                  <Button variant="ghost" size="icon" onClick={() => handleEditClick(user)}>
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    disabled={isViewer} 
+                    title={isViewer ? "Viewers cannot edit" : "Edit user"}
+                    onClick={() => handleEditClick(user)}
+                  >
                     <Edit className="h-4 w-4" />
                   </Button>
-                  <Button variant="ghost" size="icon" onClick={() => handleChangePasswordClick(user)}>
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    disabled={isViewer} 
+                    title={isViewer ? "Viewers cannot change passwords" : "Change password"}
+                    onClick={() => handleChangePasswordClick(user)}
+                  >
                     <Key className="h-4 w-4" />
                   </Button>
                 </TableCell>
@@ -106,7 +137,7 @@ const UserList: React.FC = () => {
       )}
 
       {/* Edit User Dialog */}
-      {editingUser && (
+      {editingUser && !isViewer && (
         <EditUserDialog 
           user={editingUser} 
           open={!!editingUser} 
@@ -119,7 +150,7 @@ const UserList: React.FC = () => {
       )}
 
       {/* Change Password Dialog */}
-      {changingPasswordUser && (
+      {changingPasswordUser && !isViewer && (
         <ChangePasswordDialog 
           user={changingPasswordUser} 
           open={!!changingPasswordUser} 

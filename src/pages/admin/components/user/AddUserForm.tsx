@@ -21,6 +21,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { createUser } from '../../../../services/api';
+import { useAuth } from '@/context/AuthContext';
 import toast from 'react-hot-toast';
 import { Loader2 } from 'lucide-react';
 
@@ -35,7 +36,7 @@ const formSchema = z.object({
   fullName: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
   password: passwordSchema,
-  userRoles: z.array(z.enum(["admin", "doctor", "receptionist"])).min(1, "Select at least one role"),
+  userRoles: z.array(z.enum(["admin", "doctor", "receptionist", "viewer"])).min(1, "Select at least one role"),
   departments: z.string().optional(),
   specializations: z.string().optional(),
   consultationFee: z.string().optional(), // Using string for input, will convert to number
@@ -54,6 +55,7 @@ type FormValues = z.infer<typeof formSchema>;
 
 const AddUserForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
+  const { isViewer } = useAuth();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -72,6 +74,10 @@ const AddUserForm: React.FC = () => {
   const userRoles = form.watch("userRoles");
 
   const onSubmit = async (values: FormValues) => {
+    if (isViewer) {
+      toast.error("Viewers have read-only access and cannot create users.");
+      return;
+    }
     setLoading(true);
     try {
       const userData = {
@@ -103,7 +109,7 @@ const AddUserForm: React.FC = () => {
             <FormItem>
               <FormLabel>Full Name</FormLabel>
               <FormControl>
-                <Input placeholder="John Doe" {...field} />
+                <Input placeholder="John Doe" disabled={isViewer} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -117,7 +123,7 @@ const AddUserForm: React.FC = () => {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="john@example.com" type="email" {...field} />
+                <Input placeholder="john@example.com" type="email" disabled={isViewer} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -131,7 +137,7 @@ const AddUserForm: React.FC = () => {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input placeholder="********" type="password" {...field} />
+                <Input placeholder="********" type="password" disabled={isViewer} {...field} />
               </FormControl>
               <FormDescription>
                 Min 8 chars, 1 uppercase, 1 lowercase, 1 number, 1 special char.
@@ -148,6 +154,7 @@ const AddUserForm: React.FC = () => {
             <FormItem>
               <FormLabel>Role</FormLabel>
               <Select 
+                disabled={isViewer}
                 onValueChange={(val) => field.onChange([val])} 
                 defaultValue={field.value?.[0]}
               >
@@ -159,8 +166,8 @@ const AddUserForm: React.FC = () => {
                 <SelectContent>
                   <SelectItem value="doctor">Doctor</SelectItem>
                   <SelectItem value="receptionist">Receptionist</SelectItem>
-
                   <SelectItem value="admin">Admin</SelectItem>
+                  <SelectItem value="viewer">Viewer (Read-Only)</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -179,7 +186,7 @@ const AddUserForm: React.FC = () => {
                 <FormItem>
                   <FormLabel>Department</FormLabel>
                   <FormControl>
-                    <Input placeholder="Cardiology" {...field} />
+                    <Input placeholder="Cardiology" disabled={isViewer} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -193,7 +200,7 @@ const AddUserForm: React.FC = () => {
                 <FormItem>
                   <FormLabel>Specialization</FormLabel>
                   <FormControl>
-                    <Input placeholder="Interventional Cardiologist" {...field} />
+                    <Input placeholder="Interventional Cardiologist" disabled={isViewer} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -207,7 +214,7 @@ const AddUserForm: React.FC = () => {
                 <FormItem>
                   <FormLabel>Consultation Fee (₹)</FormLabel>
                   <FormControl>
-                    <Input placeholder="1000" type="number" {...field} />
+                    <Input placeholder="1000" type="number" disabled={isViewer} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -221,7 +228,7 @@ const AddUserForm: React.FC = () => {
                 <FormItem>
                   <FormLabel>Extra Info (Optional)</FormLabel>
                   <FormControl>
-                    <Input placeholder="15 years of experience" {...field} />
+                    <Input placeholder="15 years of experience" disabled={isViewer} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -230,9 +237,9 @@ const AddUserForm: React.FC = () => {
           </div>
         )}
 
-        <Button type="submit" disabled={loading}>
+        <Button type="submit" disabled={loading || isViewer}>
           {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-          Create User
+          {isViewer ? "Viewer Mode (Disabled)" : "Create User"}
         </Button>
       </form>
     </Form>

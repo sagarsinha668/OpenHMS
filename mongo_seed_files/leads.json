@@ -1,0 +1,1352 @@
+[
+  {
+    "_id": {
+      "$oid": "65f00000000000000000002a"
+    },
+    "name": "Kiran Kulkarni",
+    "email": "kiran.kulkarni@gmail.com",
+    "phoneNumber": "9816095385",
+    "city": "Mumbai",
+    "healthIssue": "Chronic Back Pain & Sciatica",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-05-12T11:15:28.765Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-12T11:15:28.765Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000016"
+    },
+    "name": "Vikas Patil",
+    "email": "vikas.patil@gmail.com",
+    "phoneNumber": "9835086327",
+    "city": "Nashik",
+    "healthIssue": "Chronic Acidity & IBS",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-05-14T04:56:30.101Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-14T04:56:30.101Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000025"
+    },
+    "name": "Bhavna Chavan",
+    "email": "bhavna.chavan@gmail.com",
+    "phoneNumber": "9854217996",
+    "city": "Pune",
+    "healthIssue": "Chronic Back Pain & Sciatica",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-05-15T19:32:52.448Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-15T19:32:52.448Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000026"
+    },
+    "name": "Gaurav Kadam",
+    "email": "gaurav.kadam@gmail.com",
+    "phoneNumber": "9874128110",
+    "city": "Pune",
+    "healthIssue": "Anxiety & Sleep Disorder",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-05-15T19:59:47.664Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-15T19:59:47.664Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000000b"
+    },
+    "name": "Shweta Chavan",
+    "email": "shweta.chavan@gmail.com",
+    "phoneNumber": "9883526369",
+    "city": "Nagpur",
+    "healthIssue": "Fatty Liver & Digestion",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-05-17T22:05:25.178Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-17T22:05:25.178Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000002b"
+    },
+    "name": "Sachin Deshmukh",
+    "email": "sachin.deshmukh@gmail.com",
+    "phoneNumber": "9845771519",
+    "city": "Pune",
+    "healthIssue": "Thyroid Imbalance",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-05-18T07:49:16.519Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-18T07:49:16.519Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000036"
+    },
+    "name": "Amit Deshmukh",
+    "email": "amit.deshmukh@gmail.com",
+    "phoneNumber": "9848857599",
+    "city": "Pune",
+    "healthIssue": "Chronic Acidity & IBS",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-05-25T15:16:36.677Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-25T15:16:36.677Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000000f"
+    },
+    "name": "Amit Tambe",
+    "email": "amit.tambe@gmail.com",
+    "phoneNumber": "9818708817",
+    "city": "Bangalore",
+    "healthIssue": "Knee Joint Arthritis",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-05-30T05:33:13.159Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-30T05:33:13.159Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000003f"
+    },
+    "name": "Bhavna Patil",
+    "email": "bhavna.patil@gmail.com",
+    "phoneNumber": "9845918301",
+    "city": "Thane",
+    "healthIssue": "PCOD & Weight Gain",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-05-30T06:29:08.447Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-30T06:29:08.447Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000018"
+    },
+    "name": "Kiran Shinde",
+    "email": "kiran.shinde@gmail.com",
+    "phoneNumber": "9811055196",
+    "city": "Mumbai",
+    "healthIssue": "Anxiety & Sleep Disorder",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-06-02T20:56:06.619Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-02T20:56:06.619Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000023"
+    },
+    "name": "Kiran Gaikwad",
+    "email": "kiran.gaikwad@gmail.com",
+    "phoneNumber": "9856833830",
+    "city": "Thane",
+    "healthIssue": "Severe Migraine & Sinusitis",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-06-03T07:49:05.324Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-03T07:49:05.324Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000035"
+    },
+    "name": "Pradeep Jadhav",
+    "email": "pradeep.jadhav@gmail.com",
+    "phoneNumber": "9865699263",
+    "city": "Pune",
+    "healthIssue": "Diabetes Control & Fatigue",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-06-10T08:25:17.505Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-10T08:25:17.505Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000004a"
+    },
+    "name": "Divya Kadam",
+    "email": "divya.kadam@gmail.com",
+    "phoneNumber": "9826090203",
+    "city": "Nagpur",
+    "healthIssue": "Psoriasis & Skin Rashes",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-06-13T00:33:50.317Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-13T00:33:50.317Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000000e"
+    },
+    "name": "Kiran Jadhav",
+    "email": "kiran.jadhav@gmail.com",
+    "phoneNumber": "9894558569",
+    "city": "Nashik",
+    "healthIssue": "Thyroid Imbalance",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-06-15T15:11:31.229Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-15T15:11:31.229Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000029"
+    },
+    "name": "Bhavna Patil",
+    "email": "bhavna.patil@gmail.com",
+    "phoneNumber": "9810279359",
+    "city": "Mumbai",
+    "healthIssue": "Chronic Back Pain & Sciatica",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-06-17T14:05:13.116Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-17T14:05:13.116Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000047"
+    },
+    "name": "Divya Kadam",
+    "email": "divya.kadam@gmail.com",
+    "phoneNumber": "9867667839",
+    "city": "Mumbai",
+    "healthIssue": "Psoriasis & Skin Rashes",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-06-18T12:50:37.815Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-18T12:50:37.815Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000002c"
+    },
+    "name": "Sunil Jadhav",
+    "email": "sunil.jadhav@gmail.com",
+    "phoneNumber": "9858582610",
+    "city": "Pune",
+    "healthIssue": "Diabetes Control & Fatigue",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-06-19T05:31:47.555Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-19T05:31:47.555Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000000c"
+    },
+    "name": "Rohit Shinde",
+    "email": "rohit.shinde@gmail.com",
+    "phoneNumber": "9890624649",
+    "city": "Bangalore",
+    "healthIssue": "Thyroid Imbalance",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-06-24T16:01:03.162Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-24T16:01:03.162Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000034"
+    },
+    "name": "Simran Bhosale",
+    "email": "simran.bhosale@gmail.com",
+    "phoneNumber": "9850034633",
+    "city": "Thane",
+    "healthIssue": "Severe Migraine & Sinusitis",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-06-25T06:01:29.893Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-25T06:01:29.893Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000019"
+    },
+    "name": "Vikas Kulkarni",
+    "email": "vikas.kulkarni@gmail.com",
+    "phoneNumber": "9856822204",
+    "city": "Pune",
+    "healthIssue": "Anxiety & Sleep Disorder",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-06-26T23:26:20.798Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-26T23:26:20.798Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000042"
+    },
+    "name": "Kiran More",
+    "email": "kiran.more@gmail.com",
+    "phoneNumber": "9846943945",
+    "city": "Bangalore",
+    "healthIssue": "Fatty Liver & Digestion",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-06-27T10:52:59.963Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-27T10:52:59.963Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000032"
+    },
+    "name": "Simran Chavan",
+    "email": "simran.chavan@gmail.com",
+    "phoneNumber": "9822079477",
+    "city": "Nashik",
+    "healthIssue": "Anxiety & Sleep Disorder",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-06-28T02:46:48.652Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-28T02:46:48.652Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000049"
+    },
+    "name": "Nikhil Bhosale",
+    "email": "nikhil.bhosale@gmail.com",
+    "phoneNumber": "9859459459",
+    "city": "Navi Mumbai",
+    "healthIssue": "Knee Joint Arthritis",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-07-02T04:35:49.235Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-02T04:35:49.235Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000000a"
+    },
+    "name": "Alok Kulkarni",
+    "email": "alok.kulkarni@gmail.com",
+    "phoneNumber": "9837796044",
+    "city": "Thane",
+    "healthIssue": "Knee Joint Arthritis",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-07-03T22:51:00.198Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-03T22:51:00.198Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000002e"
+    },
+    "name": "Amit Tambe",
+    "email": "amit.tambe@gmail.com",
+    "phoneNumber": "9869766187",
+    "city": "Mumbai",
+    "healthIssue": "Knee Joint Arthritis",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-07-04T00:25:12.712Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-04T00:25:12.712Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000046"
+    },
+    "name": "Sunil Sawant",
+    "email": "sunil.sawant@gmail.com",
+    "phoneNumber": "9858655480",
+    "city": "Nagpur",
+    "healthIssue": "Severe Hair Fall & Dandruff",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-07-07T15:08:51.634Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-07T15:08:51.634Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000040"
+    },
+    "name": "Pooja Chavan",
+    "email": "pooja.chavan@gmail.com",
+    "phoneNumber": "9831276418",
+    "city": "Bangalore",
+    "healthIssue": "Knee Joint Arthritis",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-07-08T05:10:38.532Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-08T05:10:38.532Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000027"
+    },
+    "name": "Sachin Gaikwad",
+    "email": "sachin.gaikwad@gmail.com",
+    "phoneNumber": "9834817362",
+    "city": "Thane",
+    "healthIssue": "Knee Joint Arthritis",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-07-08T09:01:51.892Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-08T09:01:51.892Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000003"
+    },
+    "name": "Simran Gaikwad",
+    "email": "simran.gaikwad@gmail.com",
+    "phoneNumber": "9874843992",
+    "city": "Nagpur",
+    "healthIssue": "Thyroid Imbalance",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-07-09T04:21:03.524Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-09T04:21:03.524Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000048"
+    },
+    "name": "Sachin Tambe",
+    "email": "sachin.tambe@gmail.com",
+    "phoneNumber": "9855493486",
+    "city": "Mumbai",
+    "healthIssue": "Chronic Acidity & IBS",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-07-10T07:15:39.658Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-10T07:15:39.658Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000002d"
+    },
+    "name": "Pooja Thakur",
+    "email": "pooja.thakur@gmail.com",
+    "phoneNumber": "9839495500",
+    "city": "Thane",
+    "healthIssue": "Chronic Acidity & IBS",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-07-13T10:44:11.799Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-13T10:44:11.799Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000001d"
+    },
+    "name": "Swati Sawant",
+    "email": "swati.sawant@gmail.com",
+    "phoneNumber": "9856342041",
+    "city": "Bangalore",
+    "healthIssue": "Chronic Acidity & IBS",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-07-15T23:57:11.782Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-15T23:57:11.782Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000014"
+    },
+    "name": "Gaurav Shinde",
+    "email": "gaurav.shinde@gmail.com",
+    "phoneNumber": "9874472822",
+    "city": "Nashik",
+    "healthIssue": "Diabetes Control & Fatigue",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-07-18T08:25:11.537Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-18T08:25:11.537Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000033"
+    },
+    "name": "Pradeep Chavan",
+    "email": "pradeep.chavan@gmail.com",
+    "phoneNumber": "9824329989",
+    "city": "Nagpur",
+    "healthIssue": "Thyroid Imbalance",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-08-01T08:53:59.472Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-01T08:53:59.472Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000003b"
+    },
+    "name": "Sunil More",
+    "email": "sunil.more@gmail.com",
+    "phoneNumber": "9836388358",
+    "city": "Pune",
+    "healthIssue": "Severe Migraine & Sinusitis",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-08-02T19:52:29.980Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-02T19:52:29.980Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000004"
+    },
+    "name": "Pradeep Deshmukh",
+    "email": "pradeep.deshmukh@gmail.com",
+    "phoneNumber": "9863445023",
+    "city": "Thane",
+    "healthIssue": "Chronic Acidity & IBS",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-08-05T19:32:02.784Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-05T19:32:02.784Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000030"
+    },
+    "name": "Amit Deshmukh",
+    "email": "amit.deshmukh@gmail.com",
+    "phoneNumber": "9884470647",
+    "city": "Nashik",
+    "healthIssue": "Fatty Liver & Digestion",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-08-06T10:06:29.842Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-06T10:06:29.842Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000005"
+    },
+    "name": "Divya Pawar",
+    "email": "divya.pawar@gmail.com",
+    "phoneNumber": "9844888046",
+    "city": "Navi Mumbai",
+    "healthIssue": "Fatty Liver & Digestion",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-08-07T21:35:22.213Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-07T21:35:22.213Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000001c"
+    },
+    "name": "Nikhil Sawant",
+    "email": "nikhil.sawant@gmail.com",
+    "phoneNumber": "9827358999",
+    "city": "Nagpur",
+    "healthIssue": "Severe Hair Fall & Dandruff",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-08-07T22:40:25.177Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-07T22:40:25.177Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000006"
+    },
+    "name": "Vikas Rathore",
+    "email": "vikas.rathore@gmail.com",
+    "phoneNumber": "9813435110",
+    "city": "Pune",
+    "healthIssue": "Cervical Spondylitis",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-08-08T09:55:38.733Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-08T09:55:38.733Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000015"
+    },
+    "name": "Amit Rathore",
+    "email": "amit.rathore@gmail.com",
+    "phoneNumber": "9872736598",
+    "city": "Nagpur",
+    "healthIssue": "Anxiety & Sleep Disorder",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-08-10T16:48:35.763Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-10T16:48:35.763Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000041"
+    },
+    "name": "Vikas Wagh",
+    "email": "vikas.wagh@gmail.com",
+    "phoneNumber": "9886523740",
+    "city": "Navi Mumbai",
+    "healthIssue": "Severe Migraine & Sinusitis",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-08-10T22:09:57.905Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-10T22:09:57.905Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000013"
+    },
+    "name": "Nikhil Shinde",
+    "email": "nikhil.shinde@gmail.com",
+    "phoneNumber": "9841089769",
+    "city": "Thane",
+    "healthIssue": "Cervical Spondylitis",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-08-16T23:57:42.850Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-16T23:57:42.850Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000038"
+    },
+    "name": "Divya Deshmukh",
+    "email": "divya.deshmukh@gmail.com",
+    "phoneNumber": "9896025044",
+    "city": "Nagpur",
+    "healthIssue": "Diabetes Control & Fatigue",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-08-21T20:15:32.629Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-21T20:15:32.629Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000010"
+    },
+    "name": "Rohit Gaikwad",
+    "email": "rohit.gaikwad@gmail.com",
+    "phoneNumber": "9849241578",
+    "city": "Mumbai",
+    "healthIssue": "Fatty Liver & Digestion",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-08-26T05:16:06.660Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-26T05:16:06.660Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000000d"
+    },
+    "name": "Nikhil Chavan",
+    "email": "nikhil.chavan@gmail.com",
+    "phoneNumber": "9826181166",
+    "city": "Bangalore",
+    "healthIssue": "Severe Migraine & Sinusitis",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-08-29T03:34:53.366Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-29T03:34:53.366Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000044"
+    },
+    "name": "Bhavna Gaikwad",
+    "email": "bhavna.gaikwad@gmail.com",
+    "phoneNumber": "9886765462",
+    "city": "Bangalore",
+    "healthIssue": "Diabetes Control & Fatigue",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-08-29T13:12:14.820Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-29T13:12:14.820Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000001b"
+    },
+    "name": "Vikas More",
+    "email": "vikas.more@gmail.com",
+    "phoneNumber": "9821776849",
+    "city": "Mumbai",
+    "healthIssue": "Cervical Spondylitis",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-08-30T20:50:05.219Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-30T20:50:05.219Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000007"
+    },
+    "name": "Alok Sawant",
+    "email": "alok.sawant@gmail.com",
+    "phoneNumber": "9875631033",
+    "city": "Pune",
+    "healthIssue": "Severe Migraine & Sinusitis",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-08-31T01:07:30.619Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-31T01:07:30.619Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000003a"
+    },
+    "name": "Manoj Sawant",
+    "email": "manoj.sawant@gmail.com",
+    "phoneNumber": "9810507743",
+    "city": "Pune",
+    "healthIssue": "Severe Migraine & Sinusitis",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-09-01T20:36:33.462Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-01T20:36:33.462Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000011"
+    },
+    "name": "Sachin Jadhav",
+    "email": "sachin.jadhav@gmail.com",
+    "phoneNumber": "9825404523",
+    "city": "Bangalore",
+    "healthIssue": "PCOD & Weight Gain",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-09-02T08:27:31.514Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-02T08:27:31.514Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000012"
+    },
+    "name": "Simran Gaikwad",
+    "email": "simran.gaikwad@gmail.com",
+    "phoneNumber": "9877004486",
+    "city": "Mumbai",
+    "healthIssue": "PCOD & Weight Gain",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-09-06T12:47:55.125Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-06T12:47:55.125Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000024"
+    },
+    "name": "Amit Kulkarni",
+    "email": "amit.kulkarni@gmail.com",
+    "phoneNumber": "9812040159",
+    "city": "Mumbai",
+    "healthIssue": "Anxiety & Sleep Disorder",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-09-06T15:47:13.825Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-06T15:47:13.825Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000022"
+    },
+    "name": "Nikhil Gaikwad",
+    "email": "nikhil.gaikwad@gmail.com",
+    "phoneNumber": "9861722365",
+    "city": "Nashik",
+    "healthIssue": "Knee Joint Arthritis",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-09-10T11:22:06.250Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-10T11:22:06.250Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000020"
+    },
+    "name": "Sachin Jadhav",
+    "email": "sachin.jadhav@gmail.com",
+    "phoneNumber": "9810920700",
+    "city": "Navi Mumbai",
+    "healthIssue": "Cervical Spondylitis",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-09-11T21:42:51.358Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-11T21:42:51.358Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000045"
+    },
+    "name": "Shweta Patil",
+    "email": "shweta.patil@gmail.com",
+    "phoneNumber": "9811209994",
+    "city": "Bangalore",
+    "healthIssue": "Chronic Acidity & IBS",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-09-15T21:33:43.608Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-15T21:33:43.608Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000028"
+    },
+    "name": "Kiran Jadhav",
+    "email": "kiran.jadhav@gmail.com",
+    "phoneNumber": "9826068230",
+    "city": "Navi Mumbai",
+    "healthIssue": "Chronic Back Pain & Sciatica",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-09-16T04:13:11.756Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-16T04:13:11.756Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000003e"
+    },
+    "name": "Bhavna Chavan",
+    "email": "bhavna.chavan@gmail.com",
+    "phoneNumber": "9887225764",
+    "city": "Navi Mumbai",
+    "healthIssue": "Knee Joint Arthritis",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-09-16T18:54:54.875Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-16T18:54:54.875Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000039"
+    },
+    "name": "Shweta Deshmukh",
+    "email": "shweta.deshmukh@gmail.com",
+    "phoneNumber": "9815410730",
+    "city": "Nagpur",
+    "healthIssue": "Severe Migraine & Sinusitis",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-09-18T02:57:12.957Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-18T02:57:12.957Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000043"
+    },
+    "name": "Pooja Sawant",
+    "email": "pooja.sawant@gmail.com",
+    "phoneNumber": "9826856646",
+    "city": "Mumbai",
+    "healthIssue": "Anxiety & Sleep Disorder",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-09-22T06:11:37.976Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-22T06:11:37.976Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000001f"
+    },
+    "name": "Shweta Sawant",
+    "email": "shweta.sawant@gmail.com",
+    "phoneNumber": "9888035005",
+    "city": "Navi Mumbai",
+    "healthIssue": "Severe Migraine & Sinusitis",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-09-24T11:44:56.538Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-24T11:44:56.538Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000004b"
+    },
+    "name": "Simran Bhosale",
+    "email": "simran.bhosale@gmail.com",
+    "phoneNumber": "9877043348",
+    "city": "Thane",
+    "healthIssue": "Diabetes Control & Fatigue",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-09-25T14:12:24.907Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-25T14:12:24.907Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000009"
+    },
+    "name": "Pradeep Kulkarni",
+    "email": "pradeep.kulkarni@gmail.com",
+    "phoneNumber": "9829854762",
+    "city": "Nagpur",
+    "healthIssue": "Psoriasis & Skin Rashes",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-09-28T04:35:08.779Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-28T04:35:08.779Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000003c"
+    },
+    "name": "Neha Thakur",
+    "email": "neha.thakur@gmail.com",
+    "phoneNumber": "9876352664",
+    "city": "Nashik",
+    "healthIssue": "Thyroid Imbalance",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-10-01T14:55:07.920Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-01T14:55:07.920Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000017"
+    },
+    "name": "Vikas Tambe",
+    "email": "vikas.tambe@gmail.com",
+    "phoneNumber": "9867815658",
+    "city": "Navi Mumbai",
+    "healthIssue": "Chronic Back Pain & Sciatica",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-10-02T10:35:41.481Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-02T10:35:41.481Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000001e"
+    },
+    "name": "Sunil Tambe",
+    "email": "sunil.tambe@gmail.com",
+    "phoneNumber": "9881752465",
+    "city": "Pune",
+    "healthIssue": "Cervical Spondylitis",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-10-03T07:33:10.450Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-03T07:33:10.450Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000003d"
+    },
+    "name": "Manoj Jadhav",
+    "email": "manoj.jadhav@gmail.com",
+    "phoneNumber": "9836921585",
+    "city": "Navi Mumbai",
+    "healthIssue": "Knee Joint Arthritis",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-10-04T09:56:30.318Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-04T09:56:30.318Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000002"
+    },
+    "name": "Asha Rathore",
+    "email": "asha.rathore@gmail.com",
+    "phoneNumber": "9813055349",
+    "city": "Mumbai",
+    "healthIssue": "Severe Hair Fall & Dandruff",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-10-05T05:48:17.626Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-05T05:48:17.626Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000002f"
+    },
+    "name": "Asha Chavan",
+    "email": "asha.chavan@gmail.com",
+    "phoneNumber": "9853251351",
+    "city": "Nashik",
+    "healthIssue": "Severe Hair Fall & Dandruff",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-10-07T21:39:36.472Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-07T21:39:36.472Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000021"
+    },
+    "name": "Bhavna Gaikwad",
+    "email": "bhavna.gaikwad@gmail.com",
+    "phoneNumber": "9815983667",
+    "city": "Nashik",
+    "healthIssue": "Severe Hair Fall & Dandruff",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-10-16T14:32:04.698Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-16T14:32:04.698Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000037"
+    },
+    "name": "Gaurav Sawant",
+    "email": "gaurav.sawant@gmail.com",
+    "phoneNumber": "9853649208",
+    "city": "Navi Mumbai",
+    "healthIssue": "Anxiety & Sleep Disorder",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-10-18T03:43:10.764Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-18T03:43:10.764Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000001"
+    },
+    "name": "Nikhil Deshmukh",
+    "email": "nikhil.deshmukh@gmail.com",
+    "phoneNumber": "9885243710",
+    "city": "Bangalore",
+    "healthIssue": "Severe Hair Fall & Dandruff",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-10-18T22:54:22.482Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-18T22:54:22.482Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000031"
+    },
+    "name": "Divya Kulkarni",
+    "email": "divya.kulkarni@gmail.com",
+    "phoneNumber": "9857873959",
+    "city": "Mumbai",
+    "healthIssue": "Psoriasis & Skin Rashes",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-10-31T04:33:50.782Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-31T04:33:50.782Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f000000000000000000008"
+    },
+    "name": "Shweta Gaikwad",
+    "email": "shweta.gaikwad@gmail.com",
+    "phoneNumber": "9877385164",
+    "city": "Navi Mumbai",
+    "healthIssue": "Severe Migraine & Sinusitis",
+    "isConverted": true,
+    "createdAt": {
+      "$date": "2026-11-01T09:09:08.856Z"
+    },
+    "updatedAt": {
+      "$date": "2026-11-01T09:09:08.856Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65f00000000000000000001a"
+    },
+    "name": "Gaurav Sawant",
+    "email": "gaurav.sawant@gmail.com",
+    "phoneNumber": "9852239537",
+    "city": "Nagpur",
+    "healthIssue": "Cervical Spondylitis",
+    "isConverted": false,
+    "createdAt": {
+      "$date": "2026-11-02T04:12:19.445Z"
+    },
+    "updatedAt": {
+      "$date": "2026-11-02T04:12:19.445Z"
+    },
+    "__v": 0
+  }
+]

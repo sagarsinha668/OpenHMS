@@ -23,7 +23,7 @@ const userSchema = new Schema<UserDocument>(
     specializations: [{ type: String }],
     extraLine: { type: String },
     userRoles: {
-      type: [{ type: String, enum: ['admin', 'doctor', 'receptionist'] }],
+      type: [{ type: String, enum: ['admin', 'doctor', 'receptionist', 'pharmacist', 'viewer'] }],
       default: [],
     },
     consultationFee: { type: Number },

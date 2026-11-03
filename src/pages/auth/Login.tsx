@@ -4,13 +4,14 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
-import { LogIn, Activity, Lock, Mail, Loader2 } from 'lucide-react';
+import { LogIn, Activity, Lock, Mail, Loader2, Eye, EyeOff } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -79,13 +80,25 @@ const Login: React.FC = () => {
                   <Lock className="absolute left-3 top-2.5 h-5 w-5 text-slate-400 group-focus-within:text-primary transition-colors" />
                   <Input 
                     id="password" 
-                    type="password" 
+                    type={showPassword ? 'text' : 'password'} 
                     placeholder="••••••••" 
-                    className="pl-10 h-11 border-slate-200 focus:border-primary transition-all"
+                    className="pl-10 pr-10 h-11 border-slate-200 focus:border-primary transition-all"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                    className="absolute right-3 top-2.5 z-10 text-slate-400 hover:text-slate-600 focus:outline-none transition-colors cursor-pointer"
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  >
+                    {showPassword ? (
+                      <EyeOff className="h-5 w-5" />
+                    ) : (
+                      <Eye className="h-5 w-5" />
+                    )}
+                  </button>
                 </div>
               </div>
             </CardContent>
@@ -115,12 +128,12 @@ const Login: React.FC = () => {
         </Card>
 
         {/* Guest/Demo Info */}
-        <div className="mt-8 p-4 bg-primary/5 rounded-xl border border-primary/10 text-center">
+        <div className="mt-8 p-4 bg-primary/5 rounded-xl border border-primary/10 text-center space-y-1">
           <p className="text-xs text-primary font-medium">
-            Demo Credentials:
-            <span className="mx-2 font-bold px-2 py-0.5 bg-white rounded-md shadow-sm">admin@openhms.org</span>
-            |
-            <span className="ml-2 font-bold px-2 py-0.5 bg-white rounded-md shadow-sm">password123</span>
+            Login: <span className="font-bold px-1.5 py-0.5 bg-white rounded shadow-xs">admin@gmail.com</span> | <span className="font-bold px-1.5 py-0.5 bg-white rounded shadow-xs">viewer@gmail.com</span>
+          </p>
+          <p className="text-xs text-primary/80">
+            Password: <span className="font-bold px-1.5 py-0.5 bg-white rounded shadow-xs">shivsagar@9911</span>
           </p>
         </div>
       </div>

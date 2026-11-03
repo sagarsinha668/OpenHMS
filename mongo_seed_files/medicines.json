@@ -1,0 +1,130 @@
+[
+  {
+    "_id": {
+      "$oid": "65c000000000000000000001"
+    },
+    "name": "Triphala Churna",
+    "quantity": 120,
+    "lowStockThreshold": 15
+  },
+  {
+    "_id": {
+      "$oid": "65c000000000000000000002"
+    },
+    "name": "Brahmi Vati",
+    "quantity": 45,
+    "lowStockThreshold": 10
+  },
+  {
+    "_id": {
+      "$oid": "65c000000000000000000003"
+    },
+    "name": "Ashwagandha Churna",
+    "quantity": 80,
+    "lowStockThreshold": 12
+  },
+  {
+    "_id": {
+      "$oid": "65c000000000000000000004"
+    },
+    "name": "Arjunarishta",
+    "quantity": 35,
+    "lowStockThreshold": 8
+  },
+  {
+    "_id": {
+      "$oid": "65c000000000000000000005"
+    },
+    "name": "Giloy Satva",
+    "quantity": 60,
+    "lowStockThreshold": 10
+  },
+  {
+    "_id": {
+      "$oid": "65c000000000000000000006"
+    },
+    "name": "Neem Capsule",
+    "quantity": 150,
+    "lowStockThreshold": 20
+  },
+  {
+    "_id": {
+      "$oid": "65c000000000000000000007"
+    },
+    "name": "Haridra Khand",
+    "quantity": 4,
+    "lowStockThreshold": 10
+  },
+  {
+    "_id": {
+      "$oid": "65c000000000000000000008"
+    },
+    "name": "Punarnava Mandur",
+    "quantity": 3,
+    "lowStockThreshold": 8
+  },
+  {
+    "_id": {
+      "$oid": "65c000000000000000000009"
+    },
+    "name": "Chandraprabha Vati",
+    "quantity": 70,
+    "lowStockThreshold": 10
+  },
+  {
+    "_id": {
+      "$oid": "65c00000000000000000000a"
+    },
+    "name": "Yograj Guggulu",
+    "quantity": 90,
+    "lowStockThreshold": 15
+  },
+  {
+    "_id": {
+      "$oid": "65c00000000000000000000b"
+    },
+    "name": "Mahasudarshan Churna",
+    "quantity": 2,
+    "lowStockThreshold": 6
+  },
+  {
+    "_id": {
+      "$oid": "65c00000000000000000000c"
+    },
+    "name": "Shatavari Kalpa",
+    "quantity": 110,
+    "lowStockThreshold": 15
+  },
+  {
+    "_id": {
+      "$oid": "65c00000000000000000000d"
+    },
+    "name": "Dashmoolarishta",
+    "quantity": 28,
+    "lowStockThreshold": 8
+  },
+  {
+    "_id": {
+      "$oid": "65c00000000000000000000e"
+    },
+    "name": "Kaishore Guggulu",
+    "quantity": 42,
+    "lowStockThreshold": 10
+  },
+  {
+    "_id": {
+      "$oid": "65c00000000000000000000f"
+    },
+    "name": "Avipattikar Churna",
+    "quantity": 85,
+    "lowStockThreshold": 12
+  },
+  {
+    "_id": {
+      "$oid": "65c000000000000000000010"
+    },
+    "name": "Arogyavardhini Vati",
+    "quantity": 55,
+    "lowStockThreshold": 10
+  }
+]
