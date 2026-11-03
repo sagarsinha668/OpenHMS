@@ -20,6 +20,7 @@ import {
   Package
 } from 'lucide-react';
 import toast from 'react-hot-toast';
+import SEO from '@/components/common/SEO';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -56,6 +57,12 @@ const Login: React.FC = () => {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-slate-50/80 relative overflow-hidden px-4 py-8">
+      <SEO 
+        title="Sign In & Guest Demo Explorer"
+        description="Sign in to OpenHMS Open Source Hospital Management System. Explore all 4 clinical and administrative dashboards with read-only viewer mode."
+        keywords="open source hospital management system login, open source EMR login, open source clinic management demo, HMIS portal"
+        canonical="https://openhrm.netlify.app/login"
+      />
       {/* Background Decorations */}
       <div className="absolute top-[-10%] right-[-10%] w-[45%] h-[45%] bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-[-10%] left-[-10%] w-[35%] h-[35%] bg-blue-500/5 rounded-full blur-3xl"></div>

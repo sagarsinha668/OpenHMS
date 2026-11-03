@@ -1,3 +1,4 @@
+import SEO from '@/components/common/SEO';
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate, useNavigate, useSearchParams, useLocation, Outlet } from 'react-router-dom';
 import './BookingApp.css';

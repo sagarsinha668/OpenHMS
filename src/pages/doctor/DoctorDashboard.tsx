@@ -1,3 +1,4 @@
+import SEO from '@/components/common/SEO';
 import React, { useState, useEffect } from 'react';
 import { Search, ClipboardList, Users, Settings } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
@@ -104,6 +105,13 @@ const DoctorDashboard: React.FC = () => {
   };
 
   return (
+    <>
+      <SEO 
+        title="Doctor OPD & Clinical Notes Dashboard"
+        description="Doctor consultation module for open source clinic management. Supports electronic medical records (EMR), patient diagnosis, clinical notes, and Ayurvedic prescriptions."
+        keywords="open source doctor dashboard, clinical notes EMR, prescription management, electronic health records OPD, open source clinic management system"
+        canonical="https://openhrm.netlify.app/doctor"
+      />
     <MedicineProvider>
       <DashboardLayout
         menuItems={doctorMenuItems}
@@ -141,6 +149,7 @@ const DoctorDashboard: React.FC = () => {
         )}
       </DashboardLayout>
     </MedicineProvider>
+    </>
   );
 };
 

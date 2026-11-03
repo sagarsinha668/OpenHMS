@@ -1,3 +1,4 @@
+import SEO from '@/components/common/SEO';
 import React, { useState, useEffect } from 'react';
 import { Search, Pill, Database, Settings } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
@@ -85,6 +86,13 @@ const PharmacistDashboard: React.FC = () => {
   };
 
   return (
+    <>
+      <SEO 
+        title="Pharmacy & Medicine Inventory Management"
+        description="Hospital pharmacy dispensary and medicine inventory management module with low-stock alerts, Ayurvedic formulations, and prescription dispensing."
+        keywords="open source pharmacy management system, medicine inventory software, prescription dispensing HMIS, Ayurvedic pharmacy stock management"
+        canonical="https://openhrm.netlify.app/pharmacist"
+      />
     <MedicineProvider>
       <DashboardLayout
         menuItems={pharmacistMenuItems}
@@ -119,6 +127,7 @@ const PharmacistDashboard: React.FC = () => {
         )}
       </DashboardLayout>
     </MedicineProvider>
+    </>
   );
 };
 

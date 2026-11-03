@@ -1,3 +1,4 @@
+import SEO from '@/components/common/SEO';
 import React, { useState, useEffect } from 'react';
 import { Calendar, Users, Settings, ClipboardList } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
@@ -78,6 +79,13 @@ const ReceptionistDashboard: React.FC = () => {
   };
 
   return (
+    <>
+      <SEO 
+        title="Reception & Patient Queue Management"
+        description="Front desk hospital reception module for patient registration, queue token allocation, and appointment check-in in an open source hospital management system."
+        keywords="open source clinic front desk, patient queue management system, hospital token allocation, appointment scheduling, front office HMIS"
+        canonical="https://openhrm.netlify.app/receptionist"
+      />
     <DashboardLayout
       menuItems={receptionistMenuItems}
       activeTab={activeTab}
@@ -129,6 +137,7 @@ const ReceptionistDashboard: React.FC = () => {
         </div>
       )}
     </DashboardLayout>
+    </>
   );
 };
 
