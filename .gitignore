@@ -31,3 +31,8 @@ backend/dist
 backend/.env
 backend/.env.*
 !backend/.env.example
+
+# Seed data and scripts with sensitive credentials
+mongo_seed_files/
+backend/src/seed.ts
+scripts/generate_mongo_seed.cjs
