@@ -26,7 +26,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<User | null>(() => {
     try {
       const saved = localStorage.getItem('auth_user');
-      return saved ? JSON.parse(saved) : null;
+      const parsed = saved ? JSON.parse(saved) : null;
+      // Ignore corrupt cache entries (e.g. no roles) so the user is sent to login
+      return parsed?.roles?.length ? parsed : null;
     } catch {
       return null;
     }
@@ -82,6 +84,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const userObj = response?.user || response;
       if (userObj) {
         const formattedUser = normalizeUser(userObj);
+        if (formattedUser.roles.length === 0) {
+          throw new Error('Session has no roles');
+        }
         setUser(formattedUser);
         localStorage.setItem('auth_user', JSON.stringify(formattedUser));
         
@@ -97,6 +102,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     } catch (error) {
       console.warn('Could not fetch session from backend, checking local auth cache:', error);
       const saved = localStorage.getItem('auth_user');
+      if (!saved) {
+        setUser(null);
+        setActiveRole(null);
+      }
       if (!saved && !location.pathname.startsWith('/login') && !location.pathname.startsWith('/signup') && !location.pathname.startsWith('/book')) {
         navigate('/login', { replace: true });
       }
@@ -113,6 +122,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const response = await api.login(email, password);
     const userObj = response?.user || response;
     const formattedUser = normalizeUser(userObj, email);
+    if (formattedUser.roles.length === 0) {
+      throw new Error('This account has no role assigned. Contact the administrator.');
+    }
     
     setUser(formattedUser);
     localStorage.setItem('auth_user', JSON.stringify(formattedUser));

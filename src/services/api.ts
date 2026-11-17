@@ -22,6 +22,20 @@ const api = axios.create({
   withCredentials: true,
 });
 
+// Guard: if the API path is misrouted (e.g. SPA fallback serves index.html), fail loudly
+// instead of letting HTML be parsed as data.
+api.interceptors.response.use((response) => {
+  if (typeof response.data === 'string' && response.data.trimStart().startsWith('<')) {
+    return Promise.reject(new Error('API returned HTML instead of JSON. Check VITE_API_URL and the /api rewrite.'));
+  }
+  return response;
+});
+
+export const clearAuthCache = () => {
+  localStorage.removeItem('auth_user');
+  localStorage.removeItem('activeRole');
+};
+
 // Mock delay helper
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -530,9 +544,10 @@ export const login = async (email: string, password: string): Promise<any> => {
   try {
     const response = await api.post('/users/login', { email, password });
     const data = response.data?.data || response.data;
-    if (data?.user) {
-      localStorage.setItem('auth_user', JSON.stringify(data.user));
+    if (!data?.user) {
+      throw new Error('Login failed: unexpected response from server.');
     }
+    localStorage.setItem('auth_user', JSON.stringify(data.user));
     return data;
   } catch (error: any) {
     // If backend is unreachable (connection refused, network error, 404), fall back to mock accounts if credentials match!
@@ -592,12 +607,18 @@ export const getCurrentUser = async (): Promise<any> => {
   try {
     const response = await api.get('/users/me');
     const data = response.data?.data || response.data;
-    if (data?.user) {
-      localStorage.setItem('auth_user', JSON.stringify(data.user));
+    if (!data?.user) {
+      throw new Error('Session check failed: unexpected response from server.');
     }
+    localStorage.setItem('auth_user', JSON.stringify(data.user));
     return data;
   } catch (error: any) {
-    // If backend is unreachable, check local cached user
+    // Server answered (401/403, bad payload): the session is invalid, drop the cache.
+    if (error.response || !error.isAxiosError) {
+      clearAuthCache();
+      throw error;
+    }
+    // Backend unreachable (network error): fall back to the cached user.
     const saved = localStorage.getItem('auth_user');
     if (saved) {
       try {
