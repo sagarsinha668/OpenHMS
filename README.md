@@ -15,6 +15,10 @@
 </p>
 
 <p align="center">
+  <strong>Live demo:</strong> <a href="https://open-hms.vercel.app/">open-hms.vercel.app</a>
+</p>
+
+<p align="center">
   <a href="#key-features">Key Features</a> •
   <a href="#system-architecture--file-flow">Architecture & Flow</a> •
   <a href="#tech-stack">Tech Stack</a> •

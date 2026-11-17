@@ -13,7 +13,7 @@ export const SEO: React.FC<SEOProps> = ({
   description,
   keywords,
   canonical,
-  ogImage = 'https://openhrm.netlify.app/faviconV2.jpg',
+  ogImage = 'https://open-hms.vercel.app/faviconV2.jpg',
 }) => {
   const fullTitle = title 
     ? `${title} | OpenHMS — Open Source Hospital Management System`

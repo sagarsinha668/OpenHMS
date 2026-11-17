@@ -59,7 +59,7 @@ It supports:
 | **Viewer** | Auditor / Read-Only user: can view all 4 dashboards but cannot create, edit, or delete any data |
 | **Patient** (public) | Book an appointment online via a public booking widget without login |
 
-The system is deployed with the backend on **Render** (`https://openhms.onrender.com`) and the frontend on a static host.
+The system is deployed with the backend on **Render** (`https://openhms.onrender.com`) and the frontend on **Vercel** (`https://open-hms.vercel.app`).
 
 ---
 

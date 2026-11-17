@@ -3,4 +3,4 @@ Allow: /
 Allow: /login
 Allow: /book
 
-Sitemap: https://openhrm.netlify.app/sitemap.xml
+Sitemap: https://open-hms.vercel.app/sitemap.xml

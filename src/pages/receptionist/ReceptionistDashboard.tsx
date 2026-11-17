@@ -84,7 +84,7 @@ const ReceptionistDashboard: React.FC = () => {
         title="Reception & Patient Queue Management"
         description="Front desk hospital reception module for patient registration, queue token allocation, and appointment check-in in an open source hospital management system."
         keywords="open source clinic front desk, patient queue management system, hospital token allocation, appointment scheduling, front office HMIS"
-        canonical="https://openhrm.netlify.app/receptionist"
+        canonical="https://open-hms.vercel.app/receptionist"
       />
     <DashboardLayout
       menuItems={receptionistMenuItems}

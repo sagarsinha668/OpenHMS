@@ -61,7 +61,7 @@ const Login: React.FC = () => {
         title="Sign In & Guest Demo Explorer"
         description="Sign in to OpenHMS Open Source Hospital Management System. Explore all 4 clinical and administrative dashboards with read-only viewer mode."
         keywords="open source hospital management system login, open source EMR login, open source clinic management demo, HMIS portal"
-        canonical="https://openhrm.netlify.app/login"
+        canonical="https://open-hms.vercel.app/login"
       />
       {/* Background Decorations */}
       <div className="absolute top-[-10%] right-[-10%] w-[45%] h-[45%] bg-primary/5 rounded-full blur-3xl animate-pulse"></div>

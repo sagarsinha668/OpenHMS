@@ -53,7 +53,7 @@ const AdminDashboard: React.FC = () => {
         title="Admin Dashboard — Hospital & User Management"
         description="Comprehensive open source hospital administration dashboard. Manage hospitals, appointment slots, staff accounts, missed lead conversion, and clinical analytics in an integrated HMIS."
         keywords="open source hospital management system, hospital admin dashboard, clinical practice management, hospital slot management, HMIS administration, missed leads analytics"
-        canonical="https://openhrm.netlify.app/admin"
+        canonical="https://open-hms.vercel.app/admin"
       />
     <DashboardLayout
       menuItems={adminMenuItems}

@@ -10,7 +10,7 @@ const isLocalhost = typeof window !== 'undefined' &&
 
 // If VITE_API_URL is specified (e.g. connected to live Render backend), use it.
 // On localhost, default to http://localhost:3000/api.
-// On production/Netlify without a backend URL specified in env, enable mock data so all 4 dashboards work fully!
+// On production (Vercel) without a backend URL specified in env, enable mock data so all 4 dashboards work fully!
 const configuredApiUrl = import.meta.env.VITE_API_URL;
 const DEFAULT_API_URL = isLocalhost ? 'http://localhost:3000/api' : '';
 

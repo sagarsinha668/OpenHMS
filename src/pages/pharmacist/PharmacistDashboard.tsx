@@ -91,7 +91,7 @@ const PharmacistDashboard: React.FC = () => {
         title="Pharmacy & Medicine Inventory Management"
         description="Hospital pharmacy dispensary and medicine inventory management module with low-stock alerts, Ayurvedic formulations, and prescription dispensing."
         keywords="open source pharmacy management system, medicine inventory software, prescription dispensing HMIS, Ayurvedic pharmacy stock management"
-        canonical="https://openhrm.netlify.app/pharmacist"
+        canonical="https://open-hms.vercel.app/pharmacist"
       />
     <MedicineProvider>
       <DashboardLayout

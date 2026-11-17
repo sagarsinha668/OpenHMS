@@ -110,7 +110,7 @@ const DoctorDashboard: React.FC = () => {
         title="Doctor OPD & Clinical Notes Dashboard"
         description="Doctor consultation module for open source clinic management. Supports electronic medical records (EMR), patient diagnosis, clinical notes, and Ayurvedic prescriptions."
         keywords="open source doctor dashboard, clinical notes EMR, prescription management, electronic health records OPD, open source clinic management system"
-        canonical="https://openhrm.netlify.app/doctor"
+        canonical="https://open-hms.vercel.app/doctor"
       />
     <MedicineProvider>
       <DashboardLayout
